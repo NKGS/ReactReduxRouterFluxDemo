@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import RNSplashScreen from 'react-native-splash-screen';
 
 class SplashScreen extends Component {
     constructor(props){
@@ -13,6 +14,8 @@ class SplashScreen extends Component {
     }
 
     handleRootNavigation = (nextProps) => {
+        //alert(nextProps.isLoggedIn);
+        RNSplashScreen.hide();
         if(nextProps.isLoggedIn){
             Actions.push('Home');
         }
@@ -27,8 +30,8 @@ class SplashScreen extends Component {
     render(){
         return (
             <View>
-                <Text style={{color:'red'}}>Welcome</Text>
-                </View>
+                <Image source={require("../images/splashimage.jpg")} style={{ flex: 1, height: undefined, width: undefined }} />
+            </View>
         );
     }
 }
